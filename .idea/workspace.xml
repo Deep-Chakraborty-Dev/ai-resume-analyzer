@@ -5,24 +5,92 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa785bc2-eb32-4c4d-90f1-f1ed10545ca2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/ResumeCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/ScoreCircle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/constants/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/FileUploader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/pdf2img.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/lib/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/upload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/welcome/logo-dark.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/welcome/logo-light.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/welcome/welcome.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="66" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="7.603326441893722E-32" />
+      <entry key="MS500" value="7.886924406770299E-7" />
+      <entry key="S2" value="0.05108832702056445" />
+      <entry key="S5" value="0.6235320562304575" />
+      <entry key="S10" value="1.8177922343855168" />
+      <entry key="S30" value="5.611215816520084" />
+      <entry key="S60" value="9.315046422834527" />
+      <entry key="M2" value="14.32143619651988" />
+      <entry key="M5" value="26.0076440702669" />
+      <entry key="M10" value="47.5978438695789" />
+      <entry key="M15" value="69.14789017664872" />
+      <entry key="M30" value="115.58121618372847" />
+      <entry key="H1" value="158.8523013068158" />
+      <entry key="H2" value="189.27143044078386" />
+      <entry key="H4" value="207.45024452170662" />
+      <entry key="D1" value="224.39606410652465" />
+      <entry key="W1" value="227.48056786436737" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000015450714" />
+      <entry key="S5" value="1.0004428220355763" />
+      <entry key="S10" value="1.0341297455911742" />
+      <entry key="S30" value="1.7313874173608612" />
+      <entry key="S60" value="3.0216193901872352" />
+      <entry key="M2" value="5.085574188948402" />
+      <entry key="M5" value="8.522562139229793" />
+      <entry key="M10" value="12.765938666453836" />
+      <entry key="M15" value="16.334305017558698" />
+      <entry key="M30" value="23.20135614591893" />
+      <entry key="H1" value="29.098192603660124" />
+      <entry key="H2" value="33.07514144806071" />
+      <entry key="H4" value="35.4035221504713" />
+      <entry key="D1" value="37.54712289847572" />
+      <entry key="W1" value="37.93478908030904" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.089990905084692E-7" />
+      <entry key="MS500" value="0.046135581493736255" />
+      <entry key="S2" value="0.5139301598973247" />
+      <entry key="S5" value="1.3557247563789876" />
+      <entry key="S10" value="2.6949994230799867" />
+      <entry key="S30" value="7.224818377757962" />
+      <entry key="S60" value="12.222521767695909" />
+      <entry key="M2" value="19.309968557368194" />
+      <entry key="M5" value="34.463100230815265" />
+      <entry key="M10" value="60.30182709281188" />
+      <entry key="M15" value="85.42056311824751" />
+      <entry key="M30" value="138.729392520809" />
+      <entry key="H1" value="187.9134429240053" />
+      <entry key="H2" value="222.3243739072711" />
+      <entry key="H4" value="242.84157176194984" />
+      <entry key="D1" value="261.94098442837173" />
+      <entry key="W1" value="265.41503787055285" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
@@ -33,33 +101,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Node.js.main.js.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/Deep Chakraborty/WebstormProjects/ai-resume-analyzer/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Deep Chakraborty/WebstormProjects/ai-resume-analyzer/src/main.js",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Deep Chakraborty\\WebstormProjects\\ai-resume-analyzer\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Users\\Deep Chakraborty\\WebstormProjects\\ai-resume-analyzer\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.main.js.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deep Chakraborty/WebstormProjects/ai-resume-analyzer/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Deep Chakraborty/WebstormProjects/ai-resume-analyzer/src/main.js&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Deep Chakraborty\\WebstormProjects\\ai-resume-analyzer\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Deep Chakraborty\\WebstormProjects\\ai-resume-analyzer\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Deep Chakraborty\WebstormProjects\ai-resume-analyzer\public" />
@@ -81,6 +150,11 @@
       <updated>1779078418340</updated>
       <workItem from="1779078421356" duration="3891000" />
       <workItem from="1779082347506" duration="4027000" />
+      <workItem from="1779106129314" duration="4380000" />
+      <workItem from="1779175486735" duration="5452000" />
+      <workItem from="1779181081713" duration="242000" />
+      <workItem from="1779181338554" duration="1400000" />
+      <workItem from="1779191185091" duration="3832000" />
     </task>
     <servers />
   </component>
