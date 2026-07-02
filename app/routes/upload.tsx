@@ -1,5 +1,3 @@
-// Upload.tsx
-
 import { type FormEvent, useState } from 'react';
 import Navbar from '~/components/Navbar';
 import FileUploader from '~/components/FileUploader';
@@ -19,7 +17,6 @@ const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileSelect = (file: File | null) => {
-    console.log('SELECTED FILE:', file);
     setFile(file);
   };
 
@@ -37,48 +34,56 @@ const Upload = () => {
     try {
       setIsProcessing(true);
 
-      console.log('START ANALYZE');
+      // Validate inputs
+      if (!companyName.trim()) {
+        setStatusText('Please enter a company name');
+        setIsProcessing(false);
+        return;
+      }
+      if (!jobTitle.trim()) {
+        setStatusText('Please enter a job title');
+        setIsProcessing(false);
+        return;
+      }
+      if (!jobDescription.trim()) {
+        setStatusText('Please enter a job description');
+        setIsProcessing(false);
+        return;
+      }
 
       setStatusText('Uploading PDF...');
+      console.log('Uploading file:', file.name);
 
       const uploadedFile = await fs.upload([file]);
-
-      console.log('UPLOADED PDF:', uploadedFile);
+      console.log('Upload result:', uploadedFile);
 
       if (!uploadedFile) {
-        setStatusText('Failed to upload PDF');
+        setStatusText('Failed to upload PDF - Puter FS may not be initialized');
+        setIsProcessing(false);
         return;
       }
 
       setStatusText('Converting PDF to image...');
-
-      console.log('START PDF CONVERSION');
-
       const imageFile = await convertPdfToImage(file);
-
-      console.log('PDF CONVERSION RESULT:', imageFile);
+      console.log('Image conversion result:', imageFile);
 
       if (!imageFile.file) {
-        console.error(imageFile.error);
-
         setStatusText(imageFile.error || 'Failed to convert PDF');
-
+        setIsProcessing(false);
         return;
       }
 
       setStatusText('Uploading image...');
-
       const uploadedImage = await fs.upload([imageFile.file]);
-
-      console.log('UPLOADED IMAGE:', uploadedImage);
+      console.log('Image upload result:', uploadedImage);
 
       if (!uploadedImage) {
-        setStatusText('Failed to upload image');
+        setStatusText('Failed to upload image - Puter FS may not be initialized');
+        setIsProcessing(false);
         return;
       }
 
       setStatusText('Preparing data...');
-
       const uuid = generateUUID();
 
       const data = {
@@ -88,14 +93,13 @@ const Upload = () => {
         companyName,
         jobTitle,
         jobDescription,
-        feedback: '',
+        feedback: {},
       };
 
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
+      console.log('Data saved to KV store');
 
-      console.log('DATA SAVED');
-
-      setStatusText('Analyzing resume...');
+      setStatusText('Analyzing resume with AI...');
 
       const feedback = await ai.feedback(
         uploadedFile.path,
@@ -104,11 +108,11 @@ const Upload = () => {
           jobDescription,
         }),
       );
-
-      console.log('AI FEEDBACK:', feedback);
+      console.log('AI feedback:', feedback);
 
       if (!feedback) {
-        setStatusText('Failed to analyze resume');
+        setStatusText('Failed to analyze resume - AI may not be initialized');
+        setIsProcessing(false);
         return;
       }
 
@@ -118,38 +122,38 @@ const Upload = () => {
           : feedback.message.content[0].text;
 
       data.feedback = JSON.parse(feedbackText);
-
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
+      console.log('Final data saved:', data);
 
-      console.log('FINAL DATA:', data);
-
-      setStatusText('Analysis complete');
-
-      navigate(`/resume/${uuid}`);
+      setStatusText('Analysis complete! Redirecting...');
+      setTimeout(() => {
+        navigate(`/resume/${uuid}`);
+      }, 1000);
     } catch (error) {
-      console.error('UPLOAD PAGE ERROR:', error);
-
-      setStatusText(`Unexpected error: ${error}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('Error during analysis:', error);
+      setStatusText(`Error: ${errorMessage}`);
+      setIsProcessing(false);
     }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = e.currentTarget.closest('form');
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
 
-    if (!form) return;
-
-    const formData = new FormData(form);
-
-    const companyName = formData.get('company-name') as string;
-
-    const jobTitle = formData.get('job-title') as string;
-
-    const jobDescription = formData.get('job-description') as string;
+    const companyName = (formData.get('company-name') as string) || '';
+    const jobTitle = (formData.get('job-title') as string) || '';
+    const jobDescription = (formData.get('job-description') as string) || '';
 
     if (!file) {
-      alert('Please upload a PDF');
+      alert('Please upload a PDF first');
+      return;
+    }
+
+    if (!companyName.trim() || !jobTitle.trim() || !jobDescription.trim()) {
+      alert('Please fill in all fields');
       return;
     }
 

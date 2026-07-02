@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import ScoreCircle from '~/components/ScoreCircle';
 

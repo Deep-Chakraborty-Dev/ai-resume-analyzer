@@ -114,6 +114,14 @@ form {
   .uploader-selected-file {
     @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
   }
+
+  .feedback-card {
+    @apply w-full bg-white border border-gray-200 rounded-2xl p-6 shadow-sm;
+  }
+
+  .feedback-card-header {
+    @apply flex flex-row items-center justify-between gap-4 mb-6;
+  }
 }
 
 @utility bg-gradient {
