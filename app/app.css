@@ -20,14 +20,17 @@
 
 html,
 body {
-  @apply bg-white;
+  @apply text-slate-900 bg-slate-50;
+  background: radial-gradient(circle at top right, rgba(142, 152, 255, 0.18), transparent 28%),
+              radial-gradient(circle at bottom left, rgba(230, 243, 255, 0.95), transparent 34%),
+              #f8fafc;
 }
 
 main {
   @apply min-h-screen pt-10;
 }
 h1 {
-  @apply max-sm:text-[3rem] text-6xl  text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
 }
 
 h2 {
@@ -54,13 +57,18 @@ form {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
   }
   .gradient-border {
-    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
+    @apply bg-white/80 p-4 rounded-2xl border border-white/60 shadow-[0_20px_60px_-32px_rgba(64,101,238,0.45)] backdrop-blur-xl;
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(243,248,255,0.75));
   }
   .primary-button {
-    @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+    @apply primary-gradient text-white rounded-full px-6 py-3 cursor-pointer w-full transition-transform duration-300 ease-out;
+  }
+  .primary-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 28px -18px rgba(95, 103, 255, 0.85);
   }
   .resume-nav {
-    @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
+    @apply flex flex-row justify-between items-center p-5 rounded-3xl border border-slate-200/80 bg-white/80 shadow-sm backdrop-blur-sm;
   }
   .resume-summary {
     @apply flex flex-row items-center justify-center p-4 gap-4;
@@ -85,11 +93,19 @@ form {
   }
 
   .resume-card {
-    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-2xl p-4;
+    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-[34px] p-5;
+    box-shadow: 0 18px 45px -26px rgba(37, 63, 110, 0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+  }
+  .resume-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 60px -18px rgba(37, 63, 110, 0.25);
+    border-color: rgba(148, 163, 184, 0.26);
   }
 
   .resume-card-header {
-    @apply flex flex-row gap-2 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+    @apply flex flex-row gap-4 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
   }
 
   .feedback-section {
@@ -101,7 +117,9 @@ form {
   }
 
   .score-badge {
-    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+    @apply flex flex-row items-center justify-center py-2 px-4 gap-3 rounded-full bg-gradient-to-r from-[#E4E7FF] to-[#F9F5FF] shadow-sm;
+    color: #1f2937;
+    border: 1px solid rgba(148, 163, 184, 0.18);
   }
 
   .form-div {
@@ -109,10 +127,15 @@ form {
   }
 
   .uplader-drag-area {
-    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
+    @apply relative p-8 text-center transition-all duration-500 cursor-pointer bg-slate-50 rounded-3xl border border-dashed border-slate-300/80 min-h-[208px];
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 20px 60px -40px rgba(15, 23, 42, 0.18);
+  }
+  .uploader-drag-area:hover {
+    @apply border-blue-300/90 bg-white;
+    transform: translateY(-1px);
   }
   .uploader-selected-file {
-    @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
+    @apply flex items-center justify-between p-4 bg-slate-100 rounded-2xl border border-slate-200 shadow-sm;
   }
 
   .feedback-card {
