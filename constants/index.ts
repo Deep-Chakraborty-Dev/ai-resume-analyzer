@@ -91,49 +91,44 @@ export const resumes: Resume[] = [
   },
 ];
 
-export const AIResponseFormat = `
-      interface Feedback {
-      overallScore: number; //max 100
-      ATS: {
-        score: number; //rate based on ATS suitability
-        tips: {
-          type: "good" | "improve";
-          tip: string; //give 3-4 tips
-        }[];
-      };
-      toneAndStyle: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      content: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      structure: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      skills: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-    }`;
+export const AIResponseFormat = `{
+  "overallScore": 0,
+  "ATS": {
+    "score": 0,
+    "tips": [
+      { "type": "good", "tip": "Good ATS keyword usage" },
+      { "type": "improve", "tip": "Use more relevant skills from the job description" }
+    ]
+  },
+  "toneAndStyle": {
+    "score": 0,
+    "tips": [
+      { "type": "good", "tip": "Clear tone", "explanation": "Your resume has a professional tone." },
+      { "type": "improve", "tip": "Avoid repetition", "explanation": "Some phrases are repeated across sections." }
+    ]
+  },
+  "content": {
+    "score": 0,
+    "tips": [
+      { "type": "good", "tip": "Relevant experience", "explanation": "Your experience matches the role well." },
+      { "type": "improve", "tip": "Clarify achievements", "explanation": "Use bullet points to quantify impact." }
+    ]
+  },
+  "structure": {
+    "score": 0,
+    "tips": [
+      { "type": "good", "tip": "Organized layout", "explanation": "Sections are easy to scan." },
+      { "type": "improve", "tip": "Improve section headers", "explanation": "Use consistent header formatting." }
+    ]
+  },
+  "skills": {
+    "score": 0,
+    "tips": [
+      { "type": "good", "tip": "Relevant skills", "explanation": "Your resume lists relevant technical skills." },
+      { "type": "improve", "tip": "Add certifications", "explanation": "Include certifications related to the job." }
+    ]
+  }
+}`;
 
 export const prepareInstructions = ({
   jobTitle,
@@ -151,6 +146,7 @@ export const prepareInstructions = ({
   If provided, take the job description into consideration.
   The job title is: ${jobTitle}
   The job description is: ${jobDescription}
-  Provide the feedback using the following format: ${AIResponseFormat}
-  Return the analysis as a JSON object, without any other text and without the backticks.
-  Do not include any other text or comments.`;
+  Provide the feedback as valid JSON only, using these keys: overallScore, ATS, toneAndStyle, content, structure, skills.
+  Match the structure in this example:
+  ${AIResponseFormat}
+  Return only the JSON object, without any surrounding explanation, code fences, or comments.`;

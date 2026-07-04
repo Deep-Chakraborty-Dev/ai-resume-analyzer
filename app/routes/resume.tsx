@@ -12,7 +12,7 @@ export const meta = () => [
 
 const Resume = () => {
   const { id } = useParams();
-  const { auth, isLoading, fs, kv } = usePuterStore();
+  const { auth, isLoading, puterReady, fs, kv } = usePuterStore();
   const [imageUrl, setImageUrl] = useState('');
   const [resumeUrl, setResumeUrl] = useState('');
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -46,6 +46,25 @@ const Resume = () => {
 
     loadResume();
   }, [id, fs, kv]);
+
+  if (!puterReady) {
+    return (
+      <main className="!pt-0">
+        <nav className="resume-nav">
+          <Link to="/" className="back-button">
+            <img src="/icons/back.svg" alt="back arrow" className="w-2.5 h-2.5" />
+            <span className="text-gray-600 text-sm font-semibold">
+              Back to Homepage
+            </span>
+          </Link>
+        </nav>
+
+        <section className="feedback-section py-20 text-center">
+          <p className="text-lg text-gray-700">Initializing resume analysis viewer...</p>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="!pt-0">

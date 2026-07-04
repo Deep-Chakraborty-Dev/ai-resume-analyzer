@@ -1,9 +1,11 @@
+import type { ReactElement } from 'react';
+
 /**
  * ScoreCircle Component
  * Displays a circular progress indicator with a gradient fill
  * @param score - A number from 0-100 representing the score percentage
  */
-const ScoreCircle = ({ score = 75 }: { score: number }): JSX.Element => {
+const ScoreCircle = ({ score = 75 }: { score: number }): ReactElement => {
   const radius = 40;
   const stroke = 8;
   const normalizedRadius = radius - stroke / 2;

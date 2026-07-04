@@ -4,11 +4,11 @@ import FileUploader from '~/components/FileUploader';
 import { usePuterStore } from '~/lib/puter';
 import { useNavigate } from 'react-router';
 import { convertPdfToImage } from '~/lib/pdf2img';
-import { generateUUID } from '~/lib/utils';
+import { extractFeedbackText, generateUUID, parseFeedback } from '~/lib/utils';
 import { prepareInstructions } from '../../constants';
 
 const Upload = () => {
-  const { fs, ai, kv } = usePuterStore();
+  const { fs, ai, kv, puterReady } = usePuterStore();
 
   const navigate = useNavigate();
 
@@ -116,12 +116,15 @@ const Upload = () => {
         return;
       }
 
-      const feedbackText =
-        typeof feedback.message.content === 'string'
-          ? feedback.message.content
-          : feedback.message.content[0].text;
+      const feedbackText = extractFeedbackText(feedback);
 
-      data.feedback = JSON.parse(feedbackText);
+      if (!feedbackText) {
+        setStatusText('Analysis completed but no feedback was returned');
+        data.feedback = parseFeedback('{}');
+      } else {
+        data.feedback = parseFeedback(feedbackText);
+      }
+
       await kv.set(`resume:${uuid}`, JSON.stringify(data));
       console.log('Final data saved:', data);
 
@@ -139,6 +142,11 @@ const Upload = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!puterReady) {
+      setStatusText('Waiting for Puter runtime to initialize...');
+      return;
+    }
 
     const formElement = e.currentTarget;
     const formData = new FormData(formElement);
