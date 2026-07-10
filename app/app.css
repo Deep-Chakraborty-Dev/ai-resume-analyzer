@@ -18,17 +18,65 @@
   --color-badge-yellow-text: #73321b;
 }
 
-html,
-body {
-  @apply text-slate-900 bg-slate-50;
-  background: radial-gradient(circle at top right, rgba(142, 152, 255, 0.18), transparent 28%),
-              radial-gradient(circle at bottom left, rgba(230, 243, 255, 0.95), transparent 34%),
-              #f8fafc;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-slate-900 bg-slate-50 antialiased;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top right, rgba(142, 152, 255, 0.22), transparent 28%),
+      radial-gradient(circle at bottom left, rgba(255, 223, 230, 0.72), transparent 34%),
+      linear-gradient(135deg, #f8fbff 0%, #f8fafc 45%, #f5f7ff 100%);
+  }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: auto;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(24px);
+    opacity: 0.7;
+  }
+
+  body::before {
+    width: 22rem;
+    height: 22rem;
+    top: -4rem;
+    right: -6rem;
+    background: rgba(142, 152, 255, 0.24);
+  }
+
+  body::after {
+    width: 19rem;
+    height: 19rem;
+    bottom: -4rem;
+    left: -5rem;
+    background: rgba(255, 183, 197, 0.28);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  ::selection {
+    background: rgba(96, 107, 235, 0.24);
+    color: #111827;
+  }
 }
 
 main {
   @apply min-h-screen pt-10;
 }
+
 h1 {
   @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
 }
@@ -40,12 +88,16 @@ h2 {
 label {
   @apply text-dark-200;
 }
-input {
-  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+
+input,
+textarea {
+  @apply w-full p-4 rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_10px_30px_-22px_rgba(15,23,42,0.45)] focus:outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-textarea {
-  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+input:focus,
+textarea:focus {
+  transform: translateY(-1px);
 }
 
 form {
@@ -56,56 +108,117 @@ form {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
   }
+
   .gradient-border {
-    @apply bg-white/80 p-4 rounded-2xl border border-white/60 shadow-[0_20px_60px_-32px_rgba(64,101,238,0.45)] backdrop-blur-xl;
-    background-image: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(243,248,255,0.75));
+    @apply p-4 rounded-[28px] border border-white/70 shadow-[0_20px_70px_-34px_rgba(64,101,238,0.45)] backdrop-blur-xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(247,250,255,0.86));
   }
+
   .primary-button {
-    @apply primary-gradient text-white rounded-full px-6 py-3 cursor-pointer w-full transition-transform duration-300 ease-out;
+    @apply primary-gradient text-white rounded-full px-6 py-3 cursor-pointer w-full transition-all duration-300 ease-out font-semibold tracking-wide;
   }
+
   .primary-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 28px -18px rgba(95, 103, 255, 0.85);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 20px 34px -20px rgba(95, 103, 255, 0.95);
   }
+
   .resume-nav {
-    @apply flex flex-row justify-between items-center p-5 rounded-3xl border border-slate-200/80 bg-white/80 shadow-sm backdrop-blur-sm;
+    @apply flex flex-row justify-between items-center p-5 rounded-[26px] border border-slate-200/80 bg-white/80 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.35)] backdrop-blur-md;
   }
+
   .resume-summary {
     @apply flex flex-row items-center justify-center p-4 gap-4;
-    .category {
-      @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
-    }
   }
+
+  .resume-summary .category {
+    @apply flex flex-row gap-2 items-center bg-slate-50 rounded-2xl p-4 w-full justify-between border border-slate-100 shadow-sm;
+  }
+
   .back-button {
-    @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
+    @apply flex flex-row items-center gap-2 rounded-xl border border-slate-200 bg-white/90 p-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
   }
+
   .auth-button {
-    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white shadow-[0_22px_50px_-24px_rgba(96,107,235,0.85)];
   }
+
   .main-section {
-    @apply flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-5;
+    @apply flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-8;
   }
+
   .page-heading {
-    @apply flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4;
+    @apply relative flex flex-col items-center gap-6 max-w-4xl text-center max-sm:gap-4;
   }
+
+  .page-heading::before {
+    content: "";
+    display: inline-flex;
+    width: 7rem;
+    height: 0.32rem;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, rgba(129, 140, 248, 0.9), rgba(251, 113, 133, 0.75));
+    box-shadow: 0 10px 30px -16px rgba(129, 140, 248, 0.6);
+  }
+
+  .page-heading h1 {
+    @apply max-sm:text-[2.7rem] text-5xl md:text-6xl;
+  }
+
+  .page-heading h2 {
+    @apply max-w-2xl text-xl sm:text-2xl leading-relaxed text-slate-500 font-medium;
+  }
+
   .resumes-section {
     @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly;
   }
 
   .resume-card {
-    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-[34px] p-5;
-    box-shadow: 0 18px 45px -26px rgba(37, 63, 110, 0.25);
+    @apply relative flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] rounded-[34px] p-5 bg-white/90 border border-slate-200/70 overflow-hidden;
+    box-shadow: 0 24px 60px -26px rgba(37, 63, 110, 0.28);
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    border: 1px solid rgba(148, 163, 184, 0.16);
   }
+
+  .resume-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(251, 113, 133, 0.08));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
   .resume-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 28px 60px -18px rgba(37, 63, 110, 0.25);
-    border-color: rgba(148, 163, 184, 0.26);
+    transform: translateY(-7px);
+    box-shadow: 0 32px 72px -24px rgba(37, 63, 110, 0.3);
+    border-color: rgba(129, 140, 248, 0.35);
+  }
+
+  .resume-card:hover::before {
+    opacity: 1;
+  }
+
+  .resume-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .resume-card img {
+    @apply rounded-[24px] border border-slate-200/80 shadow-sm;
   }
 
   .resume-card-header {
     @apply flex flex-row gap-4 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+  }
+
+  .resume-card-header h2 {
+    @apply text-slate-900 tracking-tight;
+  }
+
+  .resume-card-header h3 {
+    @apply text-base text-slate-500;
   }
 
   .feedback-section {
@@ -113,7 +226,19 @@ form {
   }
 
   .navbar {
-    @apply flex flex-row justify-between items-center bg-white rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
+    @apply flex flex-row justify-between items-center bg-white/85 rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto border border-white/80 shadow-[0_20px_50px_-28px_rgba(37,63,110,0.4)] backdrop-blur-xl;
+  }
+
+  .navbar a {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .navbar a:hover {
+    transform: translateY(-1px);
+  }
+
+  .navbar .primary-button {
+    box-shadow: 0 16px 38px -20px rgba(96, 107, 235, 0.8);
   }
 
   .score-badge {
@@ -126,20 +251,24 @@ form {
     @apply flex flex-col gap-2 w-full items-start;
   }
 
+  .uploader-drag-area,
   .uplader-drag-area {
-    @apply relative p-8 text-center transition-all duration-500 cursor-pointer bg-slate-50 rounded-3xl border border-dashed border-slate-300/80 min-h-[208px];
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 20px 60px -40px rgba(15, 23, 42, 0.18);
+    @apply relative p-8 text-center transition-all duration-500 cursor-pointer rounded-[28px] border border-dashed border-slate-300/80 min-h-[208px] bg-white/70 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8),0_20px_60px_-40px_rgba(15,23,42,0.18)];
   }
-  .uploader-drag-area:hover {
-    @apply border-blue-300/90 bg-white;
-    transform: translateY(-1px);
+
+  .uploader-drag-area:hover,
+  .uplader-drag-area:hover {
+    @apply border-indigo-300/90 bg-white;
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.9), 0 24px 60px -34px rgba(79, 70, 229, 0.25);
   }
+
   .uploader-selected-file {
-    @apply flex items-center justify-between p-4 bg-slate-100 rounded-2xl border border-slate-200 shadow-sm;
+    @apply flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm;
   }
 
   .feedback-card {
-    @apply w-full bg-white border border-gray-200 rounded-2xl p-6 shadow-sm;
+    @apply w-full rounded-[24px] border border-slate-200/80 bg-white/90 p-6 shadow-[0_20px_55px_-35px_rgba(15,23,42,0.35)] backdrop-blur-sm;
   }
 
   .feedback-card-header {
@@ -160,24 +289,26 @@ form {
 }
 
 @utility primary-gradient {
-  background: linear-gradient(to bottom, #8e98ff, #606beb);
-  box-shadow: 0px 74px 21px 0px #6678ef00;
+  background: linear-gradient(135deg, #8e98ff 0%, #6f7cf6 45%, #606beb 100%);
+  box-shadow: 0 16px 36px -18px rgba(96, 107, 235, 0.55);
 }
 
 @utility primary-gradient-hover {
-  background: linear-gradient(to bottom, #717dff, #4957eb);
+  background: linear-gradient(135deg, #7d89ff 0%, #5f6fe8 45%, #4f5fe5 100%);
 }
 
 @utility inset-shadow {
-  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
+  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.18);
   backdrop-filter: blur(10px);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }

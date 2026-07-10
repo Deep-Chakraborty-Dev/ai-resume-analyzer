@@ -30,7 +30,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
 
   return (
     <div className="w-full gradient-border">
-      <div {...getRootProps()}>
+      <div {...getRootProps()} className={`uploader-drag-area ${isDragActive ? "border-indigo-400 bg-indigo-50/70" : ""}`}>
         <input {...getInputProps()} />
 
         <div className="space-y-4 cursor-pointer">

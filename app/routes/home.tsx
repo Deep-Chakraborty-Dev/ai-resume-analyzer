@@ -22,6 +22,9 @@ export default function Home() {
       <Navbar />
       <section className="main-section">
         <div className="page-heading py-16">
+          <span className="rounded-full border border-indigo-200/80 bg-white/75 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-indigo-700 shadow-sm">
+            AI-Powered Resume Review
+          </span>
           <h1>Track Your Application & Resume Ratings</h1>
           <h2>Make Your Resume Industry Ready</h2>
         </div>
