@@ -154,7 +154,7 @@ form {
   .page-heading::before {
     content: "";
     display: inline-flex;
-    width: 7rem;
+    width: 8rem;
     height: 0.32rem;
     border-radius: 9999px;
     background: linear-gradient(90deg, rgba(129, 140, 248, 0.9), rgba(251, 113, 133, 0.75));
