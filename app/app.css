@@ -155,9 +155,9 @@ form {
     content: "";
     display: inline-flex;
     width: 9rem;
-    height: 0.32rem;
+    height: 0.31rem;
     border-radius: 9999px;
-    background: linear-gradient(90deg, rgba(129, 140, 248, 0.9), rgba(251, 113, 133, 0.75));
+    background: linear-gradient(90deg, rgba(128, 140, 248, 0.9), rgba(251, 113, 133, 0.75));
     box-shadow: 0 10px 30px -16px rgba(129, 140, 248, 0.6);
   }
 
