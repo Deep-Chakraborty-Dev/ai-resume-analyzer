@@ -184,7 +184,7 @@ form {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(129, 139, 248, 0.1), rgba(251, 113, 133, 0.08));
+    background: linear-gradient(135deg, rgba(130, 139, 248, 0.1), rgba(251, 113, 133, 0.08));
     opacity: 0;
     transition: opacity 0.35s ease;
     pointer-events: none;
